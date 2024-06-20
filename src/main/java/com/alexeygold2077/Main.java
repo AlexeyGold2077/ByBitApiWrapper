@@ -10,5 +10,6 @@ public class Main {
         System.out.println(ByBitWrapper.get_BTCUSDT_Price());
         System.out.println(ByBitWrapper.get_ETHUSDT_Price());
         System.out.println(ByBitWrapper.get_DOGEUSDT_Price());
+        System.out.println(ByBitWrapper.get_NOTUSDT_Price());
     }
 }
