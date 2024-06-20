@@ -14,9 +14,8 @@ public class ByBitWrapper {
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(responseBody);
 
-        if (jsonNode.get("retCode").asInt() == 12810) {
-            throw new ByBitException("12810", "Not supported symbols");
-        }
+        checkException(jsonNode.get("retCode").asInt());
+
         return Float.parseFloat(jsonNode.get("result").get("bp").asText());
     }
 
@@ -38,5 +37,11 @@ public class ByBitWrapper {
 
     public static float get_DOGEUSDT_Price() throws IOException, ByBitException {
         return ByBitWrapper.getTickerPrice("DOGEUSDT");
+    }
+
+    private static void checkException(int retCode) throws ByBitException {
+        if (retCode == 12810) {
+            throw new ByBitException("12810", "Not supported symbols");
+        }
     }
 }
