@@ -2,7 +2,6 @@ package com.alexeygold2077.api;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.alexeygold2077.api.dto.ticker.Ticker;
 
 import java.io.IOException;
 
