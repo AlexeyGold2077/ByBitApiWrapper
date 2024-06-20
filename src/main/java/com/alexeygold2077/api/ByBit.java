@@ -4,7 +4,7 @@ import okhttp3.*;
 
 import java.io.IOException;
 
-public class ByBit {
+class ByBit {
 
     public static String getSymbols() throws IOException {
 
@@ -20,7 +20,11 @@ public class ByBit {
 
         assert response.body() != null;
 
-        return response.body().string();
+        String responseBody = response.body().string();
+
+        response.close();
+
+        return responseBody;
     }
 
     public static String getTicker(String symbol) throws IOException {
@@ -39,6 +43,10 @@ public class ByBit {
 
         assert response.body() != null;
 
-        return response.body().string();
+        String responseBody = response.body().string();
+
+        response.close();
+
+        return responseBody;
     }
 }
