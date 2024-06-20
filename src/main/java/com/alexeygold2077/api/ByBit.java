@@ -6,6 +6,7 @@ import java.io.IOException;
 
 class ByBit {
 
+    // Get the spec of symbol information
     public static String getSymbols() throws IOException {
 
         final String BASE_URL = "https://api.bybit.com/spot/v3/public/symbols";
@@ -27,6 +28,7 @@ class ByBit {
         return responseBody;
     }
 
+    // 24hr ticker data
     public static String getTicker(String symbol) throws IOException {
 
         final String BASE_URL = "https://api.bybit.com/spot/v3/public/quote/ticker/24hr";
