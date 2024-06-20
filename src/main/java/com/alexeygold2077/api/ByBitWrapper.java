@@ -11,7 +11,6 @@ import java.util.List;
 public class ByBitWrapper {
 
     // Get the price of a single symbol
-
     public static float getTickerPrice(String symbol) throws IOException, ByBitException {
         String responseBody = ByBit.getTicker(symbol);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -22,6 +21,7 @@ public class ByBitWrapper {
         return Float.parseFloat(jsonNode.get("result").get("bp").asText());
     }
 
+    // Get the available tickers list
     public static List<String> getAvailableTickers() throws IOException, ByBitException {
         List<String> availableTickers = new LinkedList<String>();
         String responseBody = ByBit.getSymbols();
