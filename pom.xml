@@ -5,9 +5,12 @@
 
   <groupId>com.alexeygold2077</groupId>
   <artifactId>ByBitApiWrapper</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>v1.0-stable</version>
+  <packaging>jar</packaging>
 
   <name>ByBitApiWrapper</name>
+  <description>A wrapper around the bybit api to make it easier to use</description>
+  <url>https://github.com/AlexeyGold2077/ByBitApiWrapper</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
