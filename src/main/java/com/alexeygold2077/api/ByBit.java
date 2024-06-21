@@ -8,12 +8,6 @@ class ByBit {
 
     private OkHttpClient okHttpClient;
 
-    public ByBit() {}
-
-    public ByBit(OkHttpClient okHttpClient) {
-        this.okHttpClient = okHttpClient;
-    }
-
     // Get the spec of symbol information
     public String getSymbols() throws IOException {
 

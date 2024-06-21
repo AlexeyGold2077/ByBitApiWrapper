@@ -11,8 +11,8 @@ public class Main {
     public static void main(String[] args) throws ByBitException, IOException {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        ByBitWrapper api = context.getBean("byBitWrapper", ByBitWrapper.class);
+        ByBitWrapper byBitWrapper = context.getBean("byBitWrapper", ByBitWrapper.class);
 
-        System.out.println(api.get_NOTUSDT_Price());
+        System.out.println(byBitWrapper.get_NOTUSDT_Price());
     }
 }

@@ -13,11 +13,11 @@
     <bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper"/>
 
     <bean id="byBit" class="com.alexeygold2077.api.ByBit">
-        <property name="okHttpClient" ref="okHttpClient" />
+        <property name="okHttpClient" ref="okHttpClient"/>
     </bean>
 
     <bean id="byBitWrapper" class="com.alexeygold2077.api.ByBitWrapper">
         <property name="byBit" ref="byBit"/>
-        <property name="objectMapper" ref="objectMapper" />
+        <property name="objectMapper" ref="objectMapper"/>
     </bean>
 </beans>
