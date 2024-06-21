@@ -10,10 +10,21 @@ import java.util.List;
 
 public class ByBitWrapper {
 
+    private ByBit byBit;
+    private ObjectMapper objectMapper;
+
+    public ByBitWrapper() {}
+
+    public ByBitWrapper(ByBit byBit, ObjectMapper objectMapper) {
+        this.byBit = byBit;
+        this.objectMapper = objectMapper;
+    }
+
     // Get the price of a single symbol
-    public static float getTickerPrice(String symbol) throws IOException, ByBitException {
-        String responseBody = ByBit.getTicker(symbol);
-        ObjectMapper objectMapper = new ObjectMapper();
+    public float getTickerPrice(String symbol) throws IOException, ByBitException {
+
+        String responseBody = byBit.getTicker(symbol);
+
         JsonNode jsonNode = objectMapper.readTree(responseBody);
 
         checkException(jsonNode.get("retCode").asInt());
@@ -22,10 +33,12 @@ public class ByBitWrapper {
     }
 
     // Get the available tickers list
-    public static List<String> getAvailableTickers() throws IOException, ByBitException {
-        List<String> availableTickers = new LinkedList<String>();
-        String responseBody = ByBit.getSymbols();
-        ObjectMapper objectMapper = new ObjectMapper();
+    public List<String> getAvailableTickers() throws IOException, ByBitException {
+
+        List<String> availableTickers = new LinkedList<>();
+
+        String responseBody = byBit.getSymbols();
+
         JsonNode jsonNode = objectMapper.readTree(responseBody);
 
         checkException(jsonNode.get("retCode").asInt());
@@ -39,28 +52,44 @@ public class ByBitWrapper {
         return availableTickers;
     }
 
-    public static float get_BTCUSDT_Price() throws IOException, ByBitException {
-        return ByBitWrapper.getTickerPrice("BTCUSDT");
+    public float get_BTCUSDT_Price() throws IOException, ByBitException {
+        return getTickerPrice("BTCUSDT");
     }
 
-    public static float get_ETHUSDT_Price() throws IOException, ByBitException {
-        return ByBitWrapper.getTickerPrice("ETHUSDT");
+    public float get_ETHUSDT_Price() throws IOException, ByBitException {
+        return getTickerPrice("ETHUSDT");
     }
 
-    public static float get_TONUSDT_Price() throws IOException, ByBitException {
-        return ByBitWrapper.getTickerPrice("TONUSDT");
+    public float get_TONUSDT_Price() throws IOException, ByBitException {
+        return getTickerPrice("TONUSDT");
     }
 
-    public static float get_NOTUSDT_Price() throws IOException, ByBitException {
-        return ByBitWrapper.getTickerPrice("NOTUSDT");
+    public float get_NOTUSDT_Price() throws IOException, ByBitException {
+        return getTickerPrice("NOTUSDT");
     }
 
-    public static float get_DOGEUSDT_Price() throws IOException, ByBitException {
-        return ByBitWrapper.getTickerPrice("DOGEUSDT");
+    public float get_DOGEUSDT_Price() throws IOException, ByBitException {
+        return getTickerPrice("DOGEUSDT");
     }
 
-    private static void checkException(int retCode) throws ByBitException {
+    private void checkException(int retCode) throws ByBitException {
         if (retCode == 12810)
             throw new ByBitException("12810", "Not supported symbols");
+    }
+
+    public ByBit getByBit() {
+        return byBit;
+    }
+
+    public void setByBit(ByBit byBit) {
+        this.byBit = byBit;
+    }
+
+    public ObjectMapper getObjectMapper() {
+        return objectMapper;
+    }
+
+    public void setObjectMapper(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
     }
 }
